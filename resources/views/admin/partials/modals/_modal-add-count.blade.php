@@ -73,7 +73,7 @@
                 is_primary: $('#is_primary').val(), 
                 position: $('#position').val(), 
                 status: $('#status').val(),
-                brandId: 1
+                brandId: $("#add-brand-btn").data('brand-id')
             }).done( function() {
                 // On affiche le nouveau compteur dans le html
                 $('.badges').append('<span class="badge badge-secondary">' +  $('#title').val() + '</span>');
@@ -86,7 +86,8 @@
             }).fail( function(e) {
                 console.log(e.responseJSON.errors);
             }).always( function() {
-                $('#modalAddCount').modal('hide')
+                $('#modalAddCount').modal('hide');
+                document.location.reload(true);
             });
         });
     });

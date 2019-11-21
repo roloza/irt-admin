@@ -63,15 +63,12 @@
         <div class="form-group row">
             <label class="col-md-3 col-form-label" for="status">
                 Compteurs
-                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modalAddCount">Ajouter</button>
+                <button type="button" id="add-brand-btn" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modalAddCount" data-brand-id="{{ $brand->id }}">Ajouter</button>
             </label>
             <div class="col-md-9">                
                 <div class="input-group mb-3">
                     <div class="badges mb-4" style="font-size: 18px;line-height: 9px;">
                     @foreach ($counts as $count)
-                        <form action="{{ route('counts.destroy',$count->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
                             <span class="badge badge-secondary">
                                 {{$count->title}}
                                 <button id="count-label-{{$count->id}}" type="button" class="btn btn-sm btn-info button-edit" data-toggle="modal" data-target="#modalEditCount"  
@@ -83,9 +80,7 @@
                                     data-position="{{ $count->position }}"
                                     data-status="{{ $count->status }}"
                                     >Editer</button>
-                                <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                             </span>
-                        </form>
                     @endforeach
                     </div>
                 </div>
@@ -101,7 +96,7 @@
     </div>
   </div>
 </div>
-@endsection
-
 @include('admin/partials/modals/_modal-add-count')
 @include('admin/partials/modals/_modal-edit-count')
+@endsection
+
