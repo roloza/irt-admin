@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/admin/counts', 'API\ApiCountController@store')->name('api.admin.counts.store');
 Route::post('/admin/counts/edit', 'API\ApiCountController@update')->name('api.admin.counts.edit');
+
+Route::get('brands', 'API\ApiBrandController@index')->name('api.brands');

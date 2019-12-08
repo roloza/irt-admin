@@ -67,22 +67,23 @@
     $(function () {
         $('#saveAddCount').on('click', function(e) {
             $.post("{{ route('api.admin.counts.store') }}", { 
-                title: $('#title').val(), 
-                slug: $('#slug').val(), 
-                value: $('#value').val(), 
-                is_primary: $('#is_primary').val(), 
-                position: $('#position').val(), 
-                status: $('#status').val(),
+                title: $('#modalAddCount').find('#title').val(), 
+                slug: $('#modalAddCount').find('#slug').val(), 
+                value: $('#modalAddCount').find('#value').val(), 
+                is_primary: $('#modalAddCount').find('#is_primary').val(), 
+                position: $('#modalAddCount').find('#position').val(), 
+                status: $('#modalAddCount').find('#status').val(),
                 brandId: $("#add-brand-btn").data('brand-id')
             }).done( function() {
                 // On affiche le nouveau compteur dans le html
                 $('.badges').append('<span class="badge badge-secondary">' +  $('#title').val() + '</span>');
-                $('#title').val('');
-                $('#slug').val('');
-                $('#value').val('');
-                $('#is_primary').val('');
-                $('#position').val('');
-                $('#status').val('');
+
+                $('#modalAddCount').find('#title').val('');
+                $('#modalAddCount').find('#slug').val('');
+                $('#modalAddCount').find('#value').val('');
+                $('#modalAddCount').find('#is_primary').val('');
+                $('#modalAddCount').find('#position').val('');
+                $('#modalAddCount').find('#status').val('');
             }).fail( function(e) {
                 console.log(e.responseJSON.errors);
             }).always( function() {

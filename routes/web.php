@@ -12,3 +12,6 @@
 */
 Route::resource('admin/brands', 'BrandController');
 Route::resource('admin/counts', 'CountController');
+
+Route::get('icon/{img}', 'IconsController@Icon');
+Route::get('icons', 'IconsController@Icons');

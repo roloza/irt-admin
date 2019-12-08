@@ -18,6 +18,7 @@
   <div class="card-body">
      <form class="form-horizontal" action="{{ route('brands.update',$brand->id) }}" method="POST">
         @csrf
+        @method('PUT')
         <div class="form-group row">
             <label class="col-md-3 col-form-label" for="title">Titre</label>
             <div class="col-md-9">
