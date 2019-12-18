@@ -21,3 +21,4 @@ Route::post('/admin/counts', 'API\ApiCountController@store')->name('api.admin.co
 Route::post('/admin/counts/edit', 'API\ApiCountController@update')->name('api.admin.counts.edit');
 
 Route::get('brands', 'API\ApiBrandController@index')->name('api.brands');
+Route::get('brands/by-counts', 'API\ApiBrandController@byCounts')->name('api.brands.byCounts');

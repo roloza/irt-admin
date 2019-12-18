@@ -1,0 +1,21 @@
+brand
+    - id
+    - title
+    - type (rubrique)
+    - image
+    - color
+    - position
+    - status
+    - created_at
+    - updated_at
+
+count
+    - id
+    - id_brand
+    - title
+    - value
+    - is_primary (primary / secondary)
+    - position
+    - status
+    - created_at
+    - updated_at
