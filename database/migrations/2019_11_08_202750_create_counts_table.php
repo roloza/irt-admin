@@ -17,7 +17,7 @@ class CreateCountsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
-            $table->integer('value');
+            $table->double('value');
             $table->boolean('is_primary')->default(0);
             $table->integer('position');
             $table->boolean('status')->default(0);

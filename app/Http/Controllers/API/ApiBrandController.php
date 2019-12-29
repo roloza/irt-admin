@@ -57,6 +57,15 @@ class ApiBrandController extends Controller
             'errors' => $errors,
             'data' => $brandsByCategories
         ]);
+    }
 
+    public function categories() 
+    {
+        $counts = Count::select('title','slug')->distinct()->get();
+        $errors = null;
+        return response()->json([
+            'errors' => $errors,
+            'data' => $counts
+        ]);
     }
 }
