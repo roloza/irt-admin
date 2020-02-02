@@ -23,7 +23,25 @@ class ApiBrandController extends Controller
             'errors' => $errors,
             'data' => $brands
         ]);
-    }    
+    }
+
+    public function brand($slug)
+    {
+        $brand = Brand::where(['slug' => $slug])->with('counts')->first();
+
+        $errors = null;
+        if ($brand === null) {
+            $errors = 'empty';
+        } else {
+            $iconController = new IconsController();
+            $brand->imageLabel = $brand->image;
+            $brand->image = $iconController->Icon($brand->image);
+        }
+        return response()->json([
+            'errors' => $errors,
+            'data' => $brand
+        ]);
+    }
 
     public function byCounts ()
     {
@@ -66,6 +84,20 @@ class ApiBrandController extends Controller
         return response()->json([
             'errors' => $errors,
             'data' => $counts
+        ]);
+    }
+
+    public function menu() 
+    {
+        $iconController = new IconsController();
+        $menuElts = Brand::select(['title', 'slug', 'image'])->where(['status' => 1 ])->get();
+        foreach( $menuElts as $k => $menuElt) {
+            $menuElt->image = $iconController->Icon($menuElt->image);
+        }
+        $errors = null;
+        return response()->json([
+            'errors' => $errors,
+            'data' => $menuElts
         ]);
     }
 }
